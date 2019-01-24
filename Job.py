@@ -6,19 +6,36 @@ class Job:
         self.workdate=0
         self.deliverydate=0
         self.goodcd=0
+        self.goodno =0
         self.orderqty =0
-        self.gubun = 0
+        self.rawmaterialgubun = 0
         self.spec=0
         self.processcd=0
         self.Cycletime = 0
         self.required_time=0
         self.isFinish = False
-
+        self.rawmaterialcd=0
+        self.lokfitting=0
+        self.lokfittingsize=0
     def __repr__(self):
-        return repr((self.workno,self.workdate,self.deliverydate,self.goodcd,self.orderqty,self.gubun,self.spec,self.processcd,self.Cycletime,self.required_time,self.isFinish))
+        return repr((self.workno,self.workdate,self.deliverydate,self.goodcd,self.goodno,self.orderqty,self.rawmaterialgubun,self.spec,self.processcd,self.Cycletime,self.required_time,self.isFinish,self.rawmaterialcd,self.lokfitting,self.lokfittingsize))
 
     def __iter__(self):
         return self
+
+    def setRawmaterialCd(self,cd):
+        self.rawmaterialcd=cd
+    def getRawmaterialCd(self):
+        return self.rawmaterialcd
+
+    def setLOKFitting(self,lok):
+        self.lokfitting = lok
+    def getLOKFitting(self):
+        return self.lokfitting
+    def setLOKFittingSize(self,size):
+        self.lokfittingsize = size
+    def getLOKFitting(self):
+        return self.lokfittingsize
 
 
     def setWorkNo(self,workno):
@@ -36,6 +53,11 @@ class Job:
     def getDeliveryDate(self):
         return self.deliverydate
 
+    def setGoodNo(self,goodno):
+        self.goodno = goodno
+    def getGoodNo(self):
+        return self.goodno
+
     def setGoodCd(self,goodcd):
         self.goodcd = goodcd
     def getGoodCd(self):
@@ -48,10 +70,10 @@ class Job:
     def getOrderQty(self):
         return self.orderqty
 
-    def setGubun(self,gubun):
-        self.gubun = gubun
-    def getGubun(self):
-        return self.gubun
+    def setRawmaterialGubun(self,gubun):
+        self.rawmaterialgubun = gubun
+    def getRawmaterialGubun(self):
+        return self.rawmaterialgubun
 
     def setSpec(self,spec):
         self.spec = spec
