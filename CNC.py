@@ -7,7 +7,7 @@ class CNC:
         self.cnc_num = 0
         self.cnc_shape = 0
         self.cnc_type = 0
-
+        self.cnc_iscoret = 0
         self.reservedTime = 0
         self.numOfJobs = 0
         self.joblist = []
@@ -22,7 +22,8 @@ class CNC:
         self.cnc_shape = shape
     def setType(self,type):
         self.cnc_type = type
-
+    def setIsCoret(self,coret):
+        self.cnc_iscoret = coret
     def setReservedTime(self,time):
         self.reservedTime = time
     def increaseNumOfJobs(self):
@@ -49,6 +50,8 @@ class CNC:
         return self.cnc_shape
     def getType(self):
         return self.cnc_type
+    def isCoret(self):
+        return self.cnc_iscoret
     def getNumOfJobs(self):
         return self.numOfJobs
 
@@ -75,7 +78,7 @@ class CNC:
     def printCode(self):
         print("CNC번호:",end="")
         print(self.cnc_num, end = " ")
-        print(self.cnc_shape,end = "JAW ")
+        print(self.cnc_shape,end = " ")
         print(self.getSizeFrom(),end = " ~ ")
         print(self.getSizeTo())
 

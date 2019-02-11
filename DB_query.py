@@ -6,16 +6,16 @@ def search_cycle_time(cursor2,Goodcd):
     select TWRC.Processcd, AVG(TWRC.Cycletime)
 from TWorkreport_CNC TWRC
 inner join TGood g on g.GoodCd = TWRC.Goodcd
-where g.GoodCd = '00072026'  and (TWRC.Processcd = 'P1' or TWRC.Processcd = 'P2' or TWRC.Processcd = 'P3' )
-group by TWRC.Processcd
+where g.GoodCd = """+Goodcd+"""  and (TWRC.Processcd = 'P1' or TWRC.Processcd = 'P2' or TWRC.Processcd = 'P3' )
+group by TWRC.Processcd 
+order by Processcd
     """)
     row = cursor2.fetchone()
-    cycletime = 0
+    cycletime = []
+    i = 0
     while row:
-
-        cycletime = cycletime + row[1]
+        cycletime.append(row[1])
         row = cursor2.fetchone()
-
     return cycletime
 
 def search_job_by_deadline(jobs,start,end,cursor1,cursor2):
@@ -46,7 +46,7 @@ def search_job_by_deadline(jobs,start,end,cursor1,cursor2):
      left outer join TMinor m3 on i.Class3 = m3.MinorCd
      left outer join TMinor m4 on g.Class4 = m4.MinorCd
 
-     where DeliveryDate between '20181227' and '20190110'
+     where DeliveryDate between '20181227' and '20181231'
         and PmsYn = 'N'
         and ContractYn = '1' 
        --    단조    Hex Bar    Round Bar    Square Bar    VALVE 선작업
@@ -72,7 +72,7 @@ def search_job_by_deadline(jobs,start,end,cursor1,cursor2):
         temp.setCycletime(search_cycle_time(cursor2,  goodcd))
 
         jobs.append(temp)
-        print(row[1])
+
         row = cursor1.fetchone()
 
     total_number = len(jobs)

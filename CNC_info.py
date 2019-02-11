@@ -22,6 +22,10 @@ def getCNCinfo(cncs):
                 temp.setCNCnumber(int(worksheet.cell_value(row,1)))
                 temp.setShape(worksheet.cell_value(row,2))
                 temp.setType(worksheet.cell_value(row,3))
+                if(worksheet.cell_value(row,5) == "코렛"):
+                    temp.setIsCoret("true")
+                else:
+                    temp.setIsCoret("false")
                 cncs.append(temp)
             else:
                 pass
