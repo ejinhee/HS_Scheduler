@@ -57,6 +57,7 @@ class CNC:
 
     def jobAssign(self,job):
         self.joblist.append(job)
+        self.numOfJobs +=1
     def printJobList(self):
         print("-------------------------------")
         print("CNC ",end="")
@@ -70,9 +71,16 @@ class CNC:
             print(job.getWorkDate(), end=" WorkEnd:")
             print(job.getDeliveryDate())
             print(job.getProcessCd(), end=" ")
-            print(job.getSpec(), end=" ")
-            print(job.getRequiredTime())
-        print(cnc.getReservedTime())
+            print(job.getSpec())
+            if(job.getProcessCd() == 0):
+                print("~ P",end="")
+                print(len(job.getRequiredTime()),end=" ")
+                print(job.getRequiredTime())
+            else:
+                print("P",end="")
+                print(job.getProcessCd(),end=" ")
+                print(job.getRequiredTime()[job.getProcessCd()-1])
+        print(self.getReservedTime())
         print("-------------------------------")
 
     def printCode(self):

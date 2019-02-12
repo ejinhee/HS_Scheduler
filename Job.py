@@ -37,7 +37,7 @@ class Job:
         return self.lokfitting
     def setLOKFittingSize(self,size):
         self.lokfittingsize = size
-    def getLOKFitting(self):
+    def getLOKFittingSize(self):
         return self.lokfittingsize
 
 
@@ -95,7 +95,7 @@ class Job:
             for i in range(len(self.Cycletime)):
                 self.required_time.append(int(float(self.orderqty) * float(self.Cycletime[i])))
 
-        self.setProcessCd(len(self.Cycletime))
+        self.setProcessCd(0) # 0일경우 1차,2차,3차 모두 포함
         self.setPossibleTime(0)
         self.job_state = 1
 
@@ -128,7 +128,7 @@ class Job:
         print("WorkDate:",end="")
         print(self.getWorkDate(),end=" WorkEnd:")
         print(self.getDeliveryDate())
-        print(self.getProcessCd(),end=" ")
+        print(self.getGoodNo(),end=" ")
         print(self.getSpec(),end=" ")
         print(self.getRequiredTime())
 
