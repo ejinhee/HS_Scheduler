@@ -45,5 +45,10 @@ cncs = np.array(cncs)
 cncs_forging = CNC_shape.getForgingCNC(cncs)
 cncs_hex = CNC_shape.getHexCNC(cncs)
 cncs_valve = CNC_shape.getValveCNC(cncs)
-for cnc in cncs_valve:
-    cnc.printCode()
+cncs_round = CNC_shape.getRoundCNC(cncs)
+cncs_square = CNC_shape.getSquareCNC(cncs)
+cncs_lok_forging = CNC_shape.getLokfittingForging(cncs) # 1,2,3,2m,3m,4m 단조
+cncs_lok_hex = CNC_shape.getLokfittingHex(cncs) # 1,2,3,2m,3m,4m hex
+cncs_3941 = CNC_shape.get3941cnc(cncs)
+cncs_4042 = CNC_shape.get4042cnc(cncs)
+
