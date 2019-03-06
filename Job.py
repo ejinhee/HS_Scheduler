@@ -91,6 +91,10 @@ class Job:
 
     def setCycletime(self,Cycletime):
         self.Cycletime = Cycletime
+        if(len(Cycletime) ==0):
+            print(self.getWorkNo(),end= " ")
+            print("cycle time is not exist")
+            return 0
         if (self.orderqty != 0):
             for i in range(len(self.Cycletime)):
                 self.required_time.append(int(float(self.orderqty) * float(self.Cycletime[i])))

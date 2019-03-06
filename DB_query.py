@@ -46,7 +46,7 @@ def search_job_by_deadline(jobs,start,end,cursor1,cursor2):
      left outer join TMinor m3 on i.Class3 = m3.MinorCd
      left outer join TMinor m4 on g.Class4 = m4.MinorCd
 
-     where DeliveryDate between '20181227' and '20181231'
+     where DeliveryDate between '20190101' and '20190131'
         and PmsYn = 'N'
         and ContractYn = '1' 
        --    단조    Hex Bar    Round Bar    Square Bar    VALVE 선작업
@@ -70,10 +70,11 @@ def search_job_by_deadline(jobs,start,end,cursor1,cursor2):
         temp.setLOKFitting(row[9])
         temp.setLOKFittingSize(row[10])
         temp.setCycletime(search_cycle_time(cursor2,  goodcd))
-
-        jobs.append(temp)
-
-        row = cursor1.fetchone()
+        if(len(temp.getCycletime()) ==0):
+            row = cursor1.fetchone()
+        else:
+            jobs.append(temp)
+            row = cursor1.fetchone()
 
     total_number = len(jobs)
     print("the total # of job : %d"%(total_number))

@@ -11,6 +11,7 @@ def getCNCinfo(cncs):
     rows = worksheet.nrows
     cols = worksheet.ncols
     print(rows)
+
     for row in range(rows):
         try:
             col_E = worksheet.cell_value(row,4)
@@ -19,7 +20,7 @@ def getCNCinfo(cncs):
                 size = size.replace('H','')
                 temp =CNC.CNC()
                 temp.setSize(size.split(' ~ '))
-                temp.setCNCnumber(int(worksheet.cell_value(row,1)))
+                temp.setCNCnumber(int((worksheet.cell_value(row,1))))
                 temp.setShape(worksheet.cell_value(row,2))
                 temp.setType(worksheet.cell_value(row,3))
                 if(worksheet.cell_value(row,5) == "코렛"):

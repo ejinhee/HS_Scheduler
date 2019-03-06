@@ -10,6 +10,7 @@ class CNC:
         self.cnc_iscoret = 0
         self.reservedTime = 0
         self.numOfJobs = 0
+
         self.joblist = []
 
     def __repr__(self):
